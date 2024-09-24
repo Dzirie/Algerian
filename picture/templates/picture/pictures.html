@@ -1,0 +1,26 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block title %}pictures{% endblock %}
+{% block static %}<link rel="stylesheet" href="{% static 'picture/css/pictures.css' %}">{% endblock %}
+
+
+{% block content %}
+<div class="above">
+<form method="GET" action="{% url 'picture:search' %}">
+    <input type="text" name="query" placeholder="Search Pictures..." value="{{query|default:''}}">
+    <button type="submit">Search</button>
+</form>
+
+
+<a href="{% url 'picture:add' %}" class="add">add picture</a>
+</div>    
+    <div class="gallery-container">
+        {% for picture in pictures %}
+            <div class="gallery-item">
+                <a href="{% url 'picture:details' picture.id %}">
+                <img src="{{ picture.image.url }}" alt="{{ picture.title }}" loading="lazy"></a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

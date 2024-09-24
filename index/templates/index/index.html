@@ -1,0 +1,30 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block title %}home-algrian{% endblock %}
+{% block static %}<link rel="stylesheet" href="{% static 'index/css/index.css' %}">{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="one">
+<div class="ha">
+<img src="{% static 'index/images/ha.jpeg' %}" loading="lazy">
+</div>
+<div class="ai">
+<img src="{% static 'index/images/ai.jpeg' %}" loading="lazy">
+</div>
+</div>
+
+<div class="tow">
+<div class="ja">
+<img src="{% static 'index/images/ja.jpeg' %}" loading="lazy">
+</div>
+<div class="ka">
+<img src="{% static 'index/images/ka.jpeg' %}" loading="lazy">
+</div>
+</div>
+<div class="ze">
+<img src="{% static 'index/images/ze.jpg' %}" loading="lazy">
+</div>
+</div>
+
+{% endblock %} 

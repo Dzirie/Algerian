@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="موقع جزائري يهتم بكل ماهو تراث مادي او غير مادي و الهدف حماية التراث من النهب والتزوير ">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'index/css/base.css' %}">
+    {% block static %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav><ul>
+            <li><a href="{% url 'index:home' %}">home</a></li>
+            <li><a href="{% url 'picture:pictures' %}">pictures</a></li>
+        </ul></nav>
+        <div class="login">
+{% if request.user.is_authenticated %}
+                    
+            <a href="{% url 'profiles:profile' %}" class="profile">
+            <div class="profile">
+            <img src="{{ user.profile.image.url }}" alt="Profile Picture" class="profile-pic">
+                    <span>{{ user.username }}</span></div></a>
+           <a class="a" href=" {% url 'accounts:logout' %}">logout</a>
+{% else %}
+            <a class="a" href=" {% url 'accounts:register' %}">sign up</a>
+            <a class="a" href=" {% url 'accounts:login' %}">login</a>
+{% endif %}
+        </div>        
+    </header>
+
+    <div class="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 algerian</p>
+        <a href="https://www.youtube.com/@Aymen_Tameur_DZ" class="yout">youtube</a>
+        <a href="https://www.facebook.com/profile.php?id=61565882646473">facebook</a>
+        <a href="https://www.instagram.com/legend_man648?igsh=MXRsN3N1ZHV0bDZ1Nw==" class="insta">instagram</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block title %}Create Post{% endblock %}
+{% block static %}<link rel="stylesheet" href="{% static 'picture/css/add_picture.css' %}">{% endblock %}
+
+
+
+
+
+
+
+{% block content %}
+
+<div class="add">
+    <h1>add picture</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+{% endblock %}
+

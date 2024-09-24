@@ -1,0 +1,23 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block title %}your profile {% endblock %}
+{% block static %}<link rel="stylesheet" href="{% static 'profiles/css/your_profile.css' %}">{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1>your profile</h1>
+<a class="your_pictures"  href="{% url 'picture:your_pictures' %}">your pictures</a>
+<div class="image"><img src="{{ user.profile.image.url }}" loading="lazy"></div>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <label for="image">photo profile</label>
+        <input type="file" name="image" id="image">
+        
+    </div>
+    {{name.as_p}}
+    <button type="submit">save</button>
+</form>
+</div>
+
+{% endblock %}

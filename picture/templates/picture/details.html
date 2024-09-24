@@ -1,0 +1,25 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block title %}details{% endblock %}
+{% block static %}<link rel="stylesheet" href="{% static 'picture/css/details.css' %}">{% endblock %}
+
+{% block content %}
+{% if request.user == picture.created_by %}    
+<div class="above">
+ <a href="{% url 'picture:edit' picture.pk %}" class="edit">edit</a>
+
+        <form action="{% url 'picture:delete' picture.pk %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-delete">delete</button>
+        </form>
+</div>
+{% endif %}
+<div class="down">
+    <h1>{{ picture.title }}</h1>
+    <div class="image">
+<img src="{{ picture.image.url }}" alt="{{ picture.title }}" loading="lazy">
+</div>
+     <p>{{picture.description}}</p>
+</div>
+{% endblock %}
+

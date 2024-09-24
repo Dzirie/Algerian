@@ -1,0 +1,28 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block title %}edit{% endblock %}
+{% block static %}<link rel="stylesheet" href="{% static 'picture/css/edit.css' %}">{% endblock %}
+
+{% block content %}
+    <div class="container">
+     <h1>edit</h1>
+   <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="control">
+                <label for="id_image">image</label>
+                {{ form.image }}
+            </div>
+           <div  class="control">
+<label for="title">title</label>
+                 {{form.title}}</div>
+
+            <div class="control">
+                <label for="id_description">description</label>
+                {{ form.description }}
+            </div>
+
+                <button type="submit">save</button>
+        </form>
+    </div>
+
+{% endblock %}
